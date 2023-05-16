@@ -1,0 +1,17 @@
+Function ChatGPTXR(prompt As String) As String
+    Dim url As String
+    Dim api_key As String
+    Dim request_body As String
+    Dim response As String
+
+    url = "https://gpt.sinraytec.cn/chatgpt.php"
+    api_key = "sk-dklashhUIhIHUIguiHL8OKJgFjkhjkGFTYT765KJJKljlljD"
+    request_body = "prompt=" & prompt & "&api_key=" & api_key
+    With CreateObject("MSXML2.XMLHTTP")
+        .Open "POST", url, False
+        .setRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+        .send request_body
+        response = .responseText
+    End With
+    ChatGPTXR = response
+End Function 
